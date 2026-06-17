@@ -15,13 +15,14 @@ window.CP_CONFIG = {
 
   // Optional default message pre-filled in WhatsApp chat.
   WHATSAPP_DEFAULT_MSG:
-    "Hello Celestial Pathway, I'd like to book a session. Could you please share the details?",
+    "Hi Vinita, I found Celestial Pathway online and I'd like to book a session. Could you help me choose the right one?",
 
   // Per-service pre-filled messages (used on service cards / buttons).
   WHATSAPP_SERVICE_MSG: {
-    reiki: "Hello Celestial Pathway, I'm interested in a Reiki Healing session.",
-    numerology: "Hello Celestial Pathway, I'd like to book a Numerology reading.",
-    palmistry: "Hello Celestial Pathway, I'd like to book a Palmistry reading.",
+    reiki: "Hi Vinita, I'd like to book a Reiki Healing session. I've been feeling stressed/heavy and would love some guidance.",
+    numerology: "Hi Vinita, I'd like a Numerology reading to get clarity on my life path and decisions.",
+    palmistry: "Hi Vinita, I'd like to book a Palmistry reading to understand myself and my path better.",
+    products: "Hi Vinita, I'm interested in your crystals/bracelets. Could you share what's available and the prices?",
   },
 
   // TODO(Himanshu): confirm these public contact links.

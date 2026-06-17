@@ -431,7 +431,16 @@ p { color: var(--c-ink-soft); }
   background: radial-gradient(120% 90% at 80% 10%, rgba(255,255,255,0.5), transparent 55%);
   pointer-events: none;
 }
-.media img { width: 100%; height: 100%; object-fit: cover; }
+/* Image sits above the fallback placeholder. If the photo is missing/404s,
+   the inline onerror handler removes it and the placeholder shows through. */
+.media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
 .media--portrait { aspect-ratio: 4 / 5; }
 .media--square { aspect-ratio: 1 / 1; }
 .media--wide { aspect-ratio: 16 / 11; }
@@ -839,6 +848,92 @@ p { color: var(--c-ink-soft); }
 /* Page hero (interior) */
 .page-hero { padding-block: var(--space-6) var(--space-5); text-align: center; }
 .page-hero .lead { margin: var(--space-3) auto 0; max-width: 56ch; }
+
+/* ----------------------------------------------------------- HERO MICROCOPY */
+.hero__note {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: var(--space-3);
+  font-size: 0.88rem;
+  color: var(--c-ink-soft);
+}
+.hero__note svg { width: 18px; height: 18px; color: var(--c-whatsapp); flex: none; }
+
+/* "Best for" line on service preview cards */
+.service-card__best {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 var(--space-2);
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: var(--c-rose-soft);
+  color: var(--c-plum);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Founder credibility band (homepage) */
+.founder-band { background: var(--c-sand); }
+.founder-band .founder__media .media { box-shadow: var(--shadow-card); }
+.founder-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+  line-height: 1.4;
+  color: var(--c-plum);
+  margin-bottom: var(--space-3);
+}
+.founder-points { display: grid; gap: 0.7rem; margin: var(--space-3) 0 var(--space-4); }
+.founder-points li {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  font-size: 0.97rem;
+  color: var(--c-ink);
+}
+.founder-points svg { width: 20px; height: 20px; color: var(--c-rose); flex: none; margin-top: 3px; }
+
+/* FAQ accordion (native <details>, no JS required) */
+.faq { display: grid; gap: var(--space-2); max-width: 760px; margin-inline: auto; }
+.faq__item {
+  background: var(--c-white);
+  border: var(--border-hair);
+  border-radius: var(--radius);
+  padding: 0 var(--space-3);
+  transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.faq__item[open] { border-color: var(--c-rose); box-shadow: var(--shadow-soft); }
+.faq__item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: var(--space-3) 0;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--c-plum);
+  cursor: pointer;
+  list-style: none;
+}
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary::after {
+  content: "";
+  width: 12px; height: 12px;
+  border-right: 2px solid var(--c-rose);
+  border-bottom: 2px solid var(--c-rose);
+  transform: rotate(45deg);
+  transition: transform 0.3s var(--ease);
+  flex: none;
+}
+.faq__item[open] summary::after { transform: rotate(-135deg); }
+.faq__item p {
+  padding: 0 0 var(--space-3);
+  font-size: 0.97rem;
+  margin: 0;
+}
 
 /* 9. ------------------------------------------------------------- MOTION */
 [data-reveal] {
